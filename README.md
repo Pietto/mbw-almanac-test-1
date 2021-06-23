@@ -1,1 +1,1 @@
-mbw-almanac-test-1
+mbw-almanac
