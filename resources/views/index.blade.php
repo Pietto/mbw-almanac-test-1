@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="../resources/css/animations.css">
+        <link rel="stylesheet" href="{{asset('css/animations.css')}}">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
@@ -10,9 +10,8 @@
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
-        <script type='text/javascript' src='../resources/js/conditions.js'>test();</script>
-
-        <title>title</title>
+        <script src="{{ asset('js/conditions.js') }}"></script>
+        <title>alamanc - home</title>
     </head>
     <body>
 
@@ -223,9 +222,9 @@
         </footer>
 
 
-        <script src='../resources/js/animations_index.js'></script>
-        <script src='../resources/js/header_blur.js'></script>
+        <script src="{{ URL::asset('js/animations_index.js') }}"></script>
+        <script src="{{ URL::asset('js/header_blur.js') }}"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script src={{'js/chart_test.js'}}></script>
+        <script src="{{'js/chart_test.js'}}"></script>
     </body>
 </html>
