@@ -14,13 +14,13 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/conditions.js') }}"></script>
-        <title>Almanac - history</title>
+        <title>history - almanac</title>
     </head>
     <body>
 
-        <header id='header' class='header_top header'>
+    <header id='header' class='header_top header'>
             <div id='header_content'>
-                <a class='header_button' href='{{route("home")}}'>home</a>
+                <a class='header_button' href='index'>home</a>
                 <a class='header_button' href='/'>about us</a>
                 <a class='header_button' href='statistics'>weather</a>
                 <a class='header_button' href='{{Route("history")}}'>history</a>
@@ -58,6 +58,7 @@
                 @endif
             @endauth
         </header>
+
 
         <div id='spacefiller'></div>
         <div id='spacefiller'></div>

@@ -10,7 +10,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/conditions.js') }}"></script>
-        <title>alamanc - home</title>
+        <title>home - alamanc</title>
     </head>
     <body>
     <div id='app'></div>

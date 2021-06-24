@@ -11,22 +11,26 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
 
-        <title>title</title>
+        <title>awesome photo - almanac</title>
     </head>
     <body>
         <img id="output_img1"/>
     
+ 
         <header id='header' class='header_top header'>
             <div id='header_content'>
                 <a class='header_button' href='index'>home</a>
                 <a class='header_button' href='/'>about us</a>
                 <a class='header_button' href='statistics'>weather</a>
-                <a class='header_button' href='/'>history</a>
-                <a class='header_button' href='photohub'>photo's</a>
-                
+                <a class='header_button' href='{{Route("history")}}'>history</a>
+                <a class='header_button' href='{{Route("photohub")}}'>photo's</a>
+
                 <div class="dropdown header_button">
                     <a>account</a>
                     <div class="dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">
+                        <!-- <a class='header_dropdown_button' href="#">Link 1</a>
+                        <a class='header_dropdown_button' href="#">Link 2</a>
+                        <a class='header_dropdown_button' href="#">Link 3</a> -->
 
                         @if (Route::has('login'))
                         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -46,17 +50,21 @@
                         </div>
                     @endif
                     </div>
-                </div>
-                <a href='uploadphoto'><i id='add_image_photohub' class="fas fa-image"></i></a>
             </div>
+            @auth
+                @if (Auth::user()->role == 'admin')
+                    <a class='header_button' href='{{Route("office")}}'>office</a>
+                @endif
+            @endauth
         </header>
+
 
         <div id='spacefiller'></div>
 
         <div id='upload_image_form_wrapper' class='upload_image_form_wrapper'>
             @if (Route::has('login'))
                 @auth
-                <form class='upload_photo_form' method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
+                <form class='upload_photo_form' method="POST" action="{{url('upload.image') }}" enctype="multipart/form-data">
                     @csrf
                     <img id="output_img2"/>
                     <div class="form_row">

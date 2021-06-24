@@ -235,6 +235,10 @@ header .dropdown-content a:hover{
     background-position-x: center;
 }
 
+#index_about_us_wrapper #img_1{
+    background-image: url('../images/stock/programmers.jpg');
+}
+
 #index_about_us_wrapper #img_2{
     background-image: url('../images/stock/analyst.jpg');
 }
