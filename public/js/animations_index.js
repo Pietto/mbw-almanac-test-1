@@ -9,7 +9,7 @@ setInterval(function(){
         rand = Math.floor(Math.random() * 4);
     }
     
-    index_content_1.style.backgroundImage = 'url("../resources/images/cities/' + images[rand] + '.jpg")';
+    index_content_1.style.backgroundImage = 'url("../public/images/cities/' + images[rand] + '.jpg")';
     lastRand = rand;
     
 }, 10000);
