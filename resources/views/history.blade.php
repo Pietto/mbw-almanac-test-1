@@ -11,9 +11,7 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 
-        <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/conditions.js') }}"></script>
         <title>Almanac - history</title>
@@ -216,8 +214,7 @@
         </footer>
 
 
-        <script src='../resources/js/animations_index.js'></script>
+        <script src="{{ URL::asset('js/header_blur.js') }}"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script src='../resources/js/chart_test.js'></script>
     </body>
 </html>

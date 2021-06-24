@@ -7,13 +7,13 @@
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 
-        <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/conditions.js') }}"></script>
         <title>alamanc - home</title>
     </head>
     <body>
+    <div id='app'></div>
 
         <header id='header' class='header_top header'>
             <div id='header_content'>
@@ -110,7 +110,7 @@
         </div>
         <div id='index_about_us_wrapper'>
 
-            <div id='img_1' class='images'></div>
+            <div id='img_1' class='images' style="background-image: {{URL('/images/stock/programmers.jpg')}};"></div>
             <div id='content_1' class='text'>
                 <h1>About us</h1>
                 <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
@@ -225,6 +225,6 @@
         <script src="{{ URL::asset('js/animations_index.js') }}"></script>
         <script src="{{ URL::asset('js/header_blur.js') }}"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script src="{{'js/chart_test.js'}}"></script>
+        <script src="{{'js/chart_test.js'}}"></script>  
     </body>
 </html>

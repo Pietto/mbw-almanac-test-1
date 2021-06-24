@@ -86,13 +86,7 @@
         <script>
         var loadFile = function(event) {
             output_img1.src = URL.createObjectURL(event.target.files[0]);
-            output_img1.onload = function() {
-                URL.revokeObjectURL(output.src)
-            }
             output_img2.src = URL.createObjectURL(event.target.files[0]);
-            outpu1_img2.onload = function() {
-                URL.revokeObjectURL(output.src)
-            }
         };
         </script>
 
@@ -180,6 +174,7 @@
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
             </div>
         </footer>
-        <script src='../resources/js/header_blur.js'></script>
+        
+        <script src="{{ URL::asset('js/header_blur.js') }}"></script>
     </body>
 </html>
