@@ -226,5 +226,24 @@
         <script src="{{ URL::asset('js/header_blur.js') }}"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="{{'js/chart_test.js'}}"></script>  
+        <script>
+            var images = ['NY', 'NY2', 'LO', 'UK1', 'UK2'];
+
+            var lastRand = 0;
+
+            setInterval(function(){
+                var rand = Math.floor(Math.random() * 4);
+
+                while(rand == lastRand){
+                    rand = Math.floor(Math.random() * 4);
+                }
+                
+                index_content_1.style.backgroundImage = 'url("../public/images/cities/' + images[rand] + '.jpg")';
+                lastRand = rand;
+                
+            }, 10000);
+
+            index_content_1.style.backgroundImage = 'url("../resources/images/cities/NY.jpg")';
+        </script>
     </body>
 </html>
