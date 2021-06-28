@@ -11,15 +11,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
 
-        <title>title</title>
+        <title>image - almanac</title>
     </head>
     <body>
 
     <header id='header' class='header_top header'>
             <div id='header_content'>
-                <a class='header_button' href='index'>home</a>
+                <a class='header_button' href='{{Route("home")}}'>home</a>
                 <a class='header_button' href='/'>about us</a>
-                <a class='header_button' href='statistics'>weather</a>
+                <a class='header_button' href='{{Route("statistics")}}'>weather</a>
                 <a class='header_button' href='{{Route("history")}}'>history</a>
                 <a class='header_button' href='{{Route("photohub")}}'>photo's</a>
 
@@ -132,6 +132,9 @@
                     @endif @endif
             </div>
             <div id="comment_section">
+                <div class="comment comment_empty">
+                    <p>Wow, such empty! Be the first to comment on this picture :)</p>
+                </div>
 
                 <?php
                     foreach($comments as $comment){
@@ -141,6 +144,7 @@
                         <i class="fas fa-user"></i>
                         <h3>{{$comment->user_name}}</h3>
                     </div>
+                    <script>document.getElementsByClassName('comment_empty')[0].style.display = 'none';</script>
                     <div class="commenter_comment">
                         <p>{{$comment->comment}}</p>
                         <?php
@@ -256,6 +260,11 @@
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
             </div>
         </footer>
-        <script src='../../resources/js/header_blur.js'></script>
+        <script src="{{ URL::asset('js/header_blur.js') }}"></script>
+    
+        @if (Auth::user()->darkmode == 0)
+            <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
+        @else
+        @endif
     </body>
 </html>

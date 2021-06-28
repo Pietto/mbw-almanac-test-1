@@ -336,6 +336,10 @@ footer{
     margin-top: -5px;
 }
 
+#footer_history{
+    z-index: 0;
+}
+
 footer div:nth-child(1n){
     grid-row: 1;
     grid-column: 1/2;
@@ -539,6 +543,16 @@ footer ul p{
     color: white;
 }
 
+.upload_photo_form_light{
+    background-color: transparent;
+    width: 40vw;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: rgba(255,255,255,.55);
+    backdrop-filter: blur(0.156vw);
+    color: black;
+}
+
 .form_row>p>a{
     text-decoration: underline;
 }
@@ -557,6 +571,10 @@ footer ul p{
 
 .form_row input::placeholder{
     color: rgba(255,255,255,.65)
+}
+
+.input_light_theme{
+    color: black !important;
 }
 
 .form_row input:active, .form_row:focus{
@@ -745,7 +763,22 @@ form{
     font-size: 1.5vw;
 }
 
+.comment_empty{
+    text-align: center;
+}
+
 /*Detailed data from history tab */
 #expandedData{
     display: none;
+}
+
+
+
+
+
+/* light theme settings */
+
+.lightThemeBackgroundColor{
+    background-color: rgb(240, 240, 240);
+    color: black;
 }

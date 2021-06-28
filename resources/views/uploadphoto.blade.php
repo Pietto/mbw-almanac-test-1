@@ -19,12 +19,11 @@
  
         <header id='header' class='header_top header'>
             <div id='header_content'>
-                <a class='header_button' href='index'>home</a>
+                <a class='header_button' href='{{Route("home")}}'>home</a>
                 <a class='header_button' href='/'>about us</a>
-                <a class='header_button' href='statistics'>weather</a>
+                <a class='header_button' href='{{Route("statistics")}}'>weather</a>
                 <a class='header_button' href='{{Route("history")}}'>history</a>
                 <a class='header_button' href='{{Route("photohub")}}'>photo's</a>
-
                 <div class="dropdown header_button">
                     <a>account</a>
                     <div class="dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">
@@ -78,7 +77,7 @@
                     </div>
                     <div class="form_row">
                         <i class="fas fa-heading"></i>
-                        <input id='title' type="text" class="form-control" name="name" required  value="A beautiful sky does wonders" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
+                        <input id='title' type="text" name="name" required  value="A beautiful sky does wonders" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
                     </div>
                     <div class="form_row center no_border">
                         <button type="submit" id='upload_image_form_submit'>Submit</button>
@@ -184,5 +183,10 @@
         </footer>
         
         <script src="{{ URL::asset('js/header_blur.js') }}"></script>
+    
+        @if (Auth::user()->darkmode == 0)
+            <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
+        @else
+        @endif
     </body>
 </html>

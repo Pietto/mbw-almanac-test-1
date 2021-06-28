@@ -17,9 +17,9 @@
 
         <header id='header' class='header_top header'>
             <div id='header_content'>
-                <a class='header_button' href='index'>home</a>
+                <a class='header_button' href='{{Route("home")}}'>home</a>
                 <a class='header_button' href='/'>about us</a>
-                <a class='header_button' href='statistics'>weather</a>
+                <a class='header_button' href='{{Route("statistics")}}'>weather</a>
                 <a class='header_button' href='{{Route("history")}}'>history</a>
                 <a class='header_button' href='{{Route("photohub")}}'>photo's</a>
 
@@ -101,7 +101,7 @@
         <div id='index_content_2'>
             <h1>Check our historical weather data</h1>
             <div>
-                <p>Hey there! Ever wondered what the weather looked like 6 moths ago in your city? Or maybe a year, a decade?! This is your chance! Our very precise weather API has the historical data of 30+ years. What are you waiting for?</p>
+                <p>Hey there! Ever wondered what the weather looked like 6 months ago in your city? Or maybe a year, a decade?! This is your chance! Our very precise weather API has the historical data of 30+ years. What are you waiting for?</p>
             </div>
             <a id='historical_data_button' href="#">
                 <span>enter now</span>
@@ -225,25 +225,18 @@
         <script src="{{ URL::asset('js/animations_index.js') }}"></script>
         <script src="{{ URL::asset('js/header_blur.js') }}"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        
+
+        @if (Route::has('login'))
+            @auth
+                @if (Auth::user()->darkmode == 0)
+                    <script type="text/javascript">darkmode = false;</script>
+                    <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
+                @else
+                    <script type="text/javascript">darkmode = true;</script>
+                @endif
+            @endauth
+        @endif
         <script src="{{'js/chart_test.js'}}"></script>  
-        <script>
-            var images = ['NY', 'NY2', 'LO', 'UK1', 'UK2'];
-
-            var lastRand = 0;
-
-            setInterval(function(){
-                var rand = Math.floor(Math.random() * 4);
-
-                while(rand == lastRand){
-                    rand = Math.floor(Math.random() * 4);
-                }
-                
-                index_content_1.style.backgroundImage = 'url("../public/images/cities/' + images[rand] + '.jpg")';
-                lastRand = rand;
-                
-            }, 10000);
-
-            index_content_1.style.backgroundImage = 'url("../resources/images/cities/NY.jpg")';
-        </script>
     </body>
 </html>

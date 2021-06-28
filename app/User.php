@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'photo', 'role'
+        'name', 'email', 'password', 'photo', 'role', 'darkmode'
     ];
 
     /**
@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function favoriteImages()
+    {
+        return $this->hasMany(FavoriteImage::class);
+    }
 }
