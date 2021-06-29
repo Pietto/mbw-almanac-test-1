@@ -32,7 +32,6 @@ Route::get('/', function () {
 
 Route::get('/index', 'WelcomeController@index')->name('home');
 
-
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 
 Route::get('/photohub', 'PhotohubController@index')->name('photohub');
@@ -47,9 +46,9 @@ Route::post('user/promote', 'OfficeController@promote')->name('user.promote');
 
 Route::get('/office', 'OfficeController@index')->name('office');
 
-
 Route::post('upload.image', 'imageController@store');
 
+Route::post('switchdarkmode', 'officeController@darkmode');
 
 Route::get('/upvote/{id}', [
     'uses' => 'Imagecontroller@upvote',

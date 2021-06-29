@@ -31,11 +31,6 @@
                             {{ __('Remove image') }}
                         </button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="darkmode" class="form-label">Darkmode</label>
-                        <input type="checkbox" class="form-control-switch">
-                    </div>
 
                     <h4>{{ __('Edit password') }}</h4>
 
@@ -57,6 +52,14 @@
                         <button class="btn btn-lg btn-primary" type="submit">{{ __('Save') }}</button>
                     </div>
                 </form>
+                <form action="{{url('switchdarkmode') }}" method="post" class='darkmodeform'>
+                    @csrf
+                    <div class="form-group">
+                        <label for="darkmode" class="form-label">Darkmode</label>
+                        <input name='darkmodeswitch' type="checkbox" class="form-control-switch" onChange="this.form.submit()">
+                    </div>
+                </form>
+
 
                 <form method="post" action="{{ route('accounts.delete', ['user' => $user]) }}" class="form">
                     @csrf

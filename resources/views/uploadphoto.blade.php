@@ -184,9 +184,13 @@
         
         <script src="{{ URL::asset('js/header_blur.js') }}"></script>
     
-        @if (Auth::user()->darkmode == 0)
-            <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
-        @else
+        @if (Route::has('login'))
+            @auth
+                @if (Auth::user()->darkmode == 0)
+                    <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
+                @else
+                @endif
+            @endauth
         @endif
     </body>
 </html>
