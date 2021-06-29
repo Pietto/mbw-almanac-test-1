@@ -65,7 +65,8 @@ class OfficeController extends Controller
         }else if($status == null){
             $status = 0;
         }
-        User::where(['id' =>  Auth::id()])->update(['darkmode' => $status]);
+        
+        User::where('id', Auth::id())->update(['darkmode' => $status]);
 
         $yesterday = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/yesterday?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=obs%2Ccurrent%2Chistfcst')['days'];
 

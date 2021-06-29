@@ -56,10 +56,13 @@
                     @csrf
                     <div class="form-group">
                         <label for="darkmode" class="form-label">Darkmode</label>
-                        <input name='darkmodeswitch' type="checkbox" class="form-control-switch" onChange="this.form.submit()">
+                        @if(Auth::user()->darkmode == 0)
+                            <input name='darkmodeswitch' type="checkbox" class="form-control-switch" onChange="this.form.submit()">
+                        @elseif(Auth::user()->darkmode == 1)
+                            <input name='darkmodeswitch' type="checkbox" class="form-control-switch" onChange="this.form.submit()" checked>
+                        @endif
                     </div>
                 </form>
-
 
                 <form method="post" action="{{ route('accounts.delete', ['user' => $user]) }}" class="form">
                     @csrf
