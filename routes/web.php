@@ -20,11 +20,11 @@ use Illuminate\Support\Facades\Route;
  */
 Route::get('/', function () {
 
-    $yesterday = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/yesterday?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=obs%2Ccurrent%2Chistfcst')['days'];
+    $yesterday = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/yesterday?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=obs,current,histfcst')['days'];
 
-    $today = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/today?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=stats%2Ccurrent')['days'];
+    $today = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/today?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=stats,current')['days'];
 
-    $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=fcst%2Cstats%2Ccurrent')['days'];
+    $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=fcst,stats,current')['days'];
 
     return view('index', ['yesterdayData' => $yesterday, 'forecastData' => $forecast, 'todayData' => $today]);
 
@@ -32,9 +32,8 @@ Route::get('/', function () {
 
 Route::get('/index', 'WelcomeController@index')->name('home');
 
-Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 
-Route::get('/photohub', 'PhotohubController@index')->name('photohub');
+Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 
 Route::get('/uploadphoto', 'PhotohubController@photoform')->name('uploadphoto');
 
@@ -46,9 +45,9 @@ Route::post('user/promote', 'OfficeController@promote')->name('user.promote');
 
 Route::get('/office', 'OfficeController@index')->name('office');
 
+
 Route::post('upload.image', 'imageController@store');
 
-Route::post('switchdarkmode', 'officeController@darkmode');
 
 Route::get('/upvote/{id}', [
     'uses' => 'Imagecontroller@upvote',
@@ -75,12 +74,6 @@ Route::get('/deletePost/{id}', [
     'as' => 'post.delete'
 ]);
 
-//get the history weather
-
-Route::get('/history', 'HistoryController@index')->name('history');
-
-Route::get('/history/result', 'HistoryController@getDate')->name('get.date');
-
 /** Favorite images routes */
 Route::resource('favorite-images', '\\App\\Http\\Controllers\\FavoriteImageController')->only(['index', 'store', 'destroy']);
 /**
@@ -93,6 +86,8 @@ Route::resource('favorite-images', '\\App\\Http\\Controllers\\FavoriteImageContr
  * destroy -> DELETE (verwijderen) Route::delete('entities/{entity}', 'EntityController::destroy')->name('entities.destroy');
  */
 
+Route::get('/weather', 'WeatherController@weather')->name('weather');
+
 // Middleware zodat deze routes alleen maar worden gebruikt als je bent ingelogd.
 // https://laravel.com/docs/8.x/routing#route-group-middleware
 Route::middleware(['auth'])->group(function () {
@@ -100,6 +95,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/account', 'AccountController@index')->name('accounts.index');
     Route::patch('/account/{user}', 'AccountController@update')->name('accounts.update');
     Route::delete('/account/{user}', 'AccountController@destroy')->name('accounts.delete');
+
+    Route::get('/photohub', 'PhotohubController@index')->name('photohub');
 });
 
 Auth::routes();
+
+

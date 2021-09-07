@@ -35,6 +35,7 @@ class RegisterController extends Controller
     {
         return 'index';
     }
+
     /**
      * Create a new controller instance.
      *
